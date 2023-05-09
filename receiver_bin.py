@@ -7,8 +7,8 @@ parser = argparse.ArgumentParser(description='Receives video from [tcpclientsrc]
 parser.add_argument('--host', help='Host address of [tcpclientsrc]', required=True)
 parser.add_argument('--port', help='Port number of [tcpclientsrc]', required=True)
 
-parser.add_argument('--width', help='Width of received video frames', default=1632)
-parser.add_argument('--height', help='Height of received video frames', default=924)
+parser.add_argument('--width', help='Width of received video frames', default=1920)
+parser.add_argument('--height', help='Height of received video frames', default=1080)
 parser.add_argument('--enable_image_capture', help='Whether to enable image capture by pressing S', default=False)
 parser.add_argument('--image_capture_dir', help='Path of directory to save captured images', default='./captures')
 
