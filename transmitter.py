@@ -14,7 +14,7 @@ class Transmitter():
             port,
             width,
             height,
-            framerate,
+            frame_rate,
             weights_file,
             confidence_threshold,
             max_frames_disappeared,
@@ -27,13 +27,13 @@ class Transmitter():
 
         self.width = width
         self.height = height
-        self.framerate = framerate
+        self.frame_rate = frame_rate
         self.enable_image_capture = enable_image_capture
         self.image_capture_dir = pathlib.PurePath(image_capture_dir)
         self.confidence_threshold = confidence_threshold
         self.max_frames_disappeared = max_frames_disappeared
 
-        self.gstreamer_in = f'nvarguscamerasrc ! video/x-raw(memory:NVMM), width={self.width}, height={self.height}, framerate={self.framerate}/1 ! nvvidconf flip-method=2 ! omxh264enc ! h264parse ! rtph264pay config-interval=1 pt=96 ! gdppay ! videoconvert ! video/x-raw, format=BGR ! queue ! appsink'
+        self.gstreamer_in = f'nvarguscamerasrc ! video/x-raw(memory:NVMM), width={self.width}, height={self.height}, framerate={self.frame_rate}/1 ! nvvidconv flip-method=2 ! omxh264enc ! h264parse ! rtph264pay config-interval=1 pt=96 ! gdppay ! videoconvert ! video/x-raw, format=BGR ! queue ! appsink'
         self.gstreamer_out = f'appsrc ! queue ! tcpserversink host={self.host} port={self.port}'
         self.capture = None
         self.writer = None
