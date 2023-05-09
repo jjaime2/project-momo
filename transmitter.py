@@ -55,7 +55,7 @@ class Transmitter():
             logging.error('Failed to open capture')
             return
         
-        self.writer = cv.VideoWriter(self.gstreamer_out, cv.CAP_GSTREAMER, 0, self.framerate, (self.width, self.height))
+        self.writer = cv.VideoWriter(self.gstreamer_out, cv.CAP_GSTREAMER, 0, self.frame_rate, (self.width, self.height))
         if not self.writer.isOpened():
             logging.error('Failed to open writer')
             return
